@@ -63,7 +63,7 @@ error: errorHandler.getErrorMessage(err)
 	const remove = async (req, res) => { 
 try {
 let user = req.profile
-let deletedUser = await user.remove() 
+let deletedUser = await user.deleteOne() 
 deletedUser.hashed_password = undefined 
 deletedUser.salt = undefined
 res.json(deletedUser) 
