@@ -91,4 +91,15 @@ const remove = async (req, res) => {
         })
     } 
 }
-export default { create, productByID, read, list, remove, update }
+const removeAll = async (req, res) => { 
+    try {
+        // remove all categories using mongoose
+        let products = await Product.deleteMany({})
+        res.json(products)
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err) 
+        })
+    } 
+}
+export default { create, productByID, read, list, remove, update, removeAll }
